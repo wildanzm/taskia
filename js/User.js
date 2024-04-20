@@ -12,9 +12,32 @@ class User {
 		this.users.push(newUser);
 		localStorage.setItem('users', JSON.stringify(this.users));
 
-		return window.location = '../signin.html'
+		// return window.location = '../signin.html'
 
-      console.log(userData)
+		return {
+			success: true,
+		};
+
+	}
+
+	signInUser(usernameByInput) {
+
+		const userExists = this.users.some((user) => user.username.toLowerCase() === usernameByInput.toLowerCase());
+
+		if (userExists) {
+
+			return {
+				success: true,
+				username,
+			}
+
+		} else {
+			return {
+				success: false,
+				message: 'Data tidak ditemukan',
+			}
+		}
+
 	}
 
 	getUsers() {

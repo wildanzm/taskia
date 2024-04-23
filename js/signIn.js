@@ -5,16 +5,15 @@ document.addEventListener("DOMContentLoaded", () => {
 	userForm.addEventListener("submit", (e) => {
 		e.preventDefault();
 
-		
-      const usernameByInput = document.getElementById("username").value;
+		const usernameByInput = document.getElementById("username").value;
 
 		const result = userManager.signInUser(usernameByInput);
 
 		if (result.success) {
-			// return (window.location.href = "../signin.html");
-			alert('success')
+			localStorage.setItem("usernameLoggedIn", usernameByInput);
+			return (window.location.href = "../tasks.html");
 		} else {
-			alert(result.message)
+			alert(result.message);
 		}
 	});
 });

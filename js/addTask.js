@@ -8,14 +8,22 @@ document.addEventListener("DOMContentLoaded", () => {
 		const taskData = {
 			taskName: document.getElementById("taskName").value,
 			taskPriority: document.getElementById("taskPriority").value,
-			createdAt: new Date().toLocaleString("id-ID"),
+			createdAt: new Date().toLocaleString("id-ID", {
+				day: 'numeric',
+				month: 'short',
+				year: 'numeric'
+			}),
 		};
 
 		const result = taskManager.saveTask(taskData);
 
 		if (result.success) {
-			// return (window.location.href = "../signin.html");
-			alert("oke");
+			Swal.fire({
+				icon: "success",
+				title: "Task Added Successfully",
+				timer: 2000,
+			});
+			return (window.location.href = "../tasks.html");
 		}
 	});
 });

@@ -1,21 +1,23 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+	const userForm = document.getElementById("userForm");
+	const userManager = new User();
 
-   const userForm = document.getElementById('userForm');
-   const userManager = new User();
+	userForm.addEventListener("submit", (e) => {
+		e.preventDefault();
 
-   userForm.addEventListener('submit', (e) => {
-      
-      e.preventDefault();
+		const userData = {
+			username: document.getElementById("username").value,
+		};
 
-      const userData = {
-         username: document.getElementById('username').value,
-      };
+		const result = userManager.saveUser(userData);
 
-      const result = userManager.saveUser(userData);
-
-      if (result.success) {
-         return (window.location.href = "../signin.html");
-      }
-   })
-
-})
+		if (result.success) {
+			Swal.fire({
+				icon: "success",
+				title: "Account has been Created",
+				timer: 2000,
+			});
+			return (window.location.href = "../signin.html");
+		}
+	});
+});

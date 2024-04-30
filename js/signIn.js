@@ -11,9 +11,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 		if (result.success) {
 			localStorage.setItem("usernameLoggedIn", usernameByInput);
+			Swal.fire({
+				icon: 'success',
+				title: 'Login Successfully',
+				timer: 1500,
+			})
 			return (window.location.href = "../tasks.html");
 		} else {
-			alert(result.message);
+			Swal.fire({
+				icon: "error",
+				title: "Oopps....",
+				text: "Please check your username",
+				timer: 2000,
+			});
 		}
 	});
 });

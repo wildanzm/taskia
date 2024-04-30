@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				title: "Account has been Created",
 				timer: 2000,
 			});
-			return (window.location.href = "../signin.html");
+			return (window.location.href = "../index.html");
 		}
 	});
 });
